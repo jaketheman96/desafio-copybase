@@ -1,7 +1,10 @@
 import { defineStore } from "pinia"
 
-export default defineStore({
-  state: () => ({}),
+export const usePokemonsStore = defineStore({
+  id: 'PokemonsStore',
+  state: () => ({ allPokemons: [] }),
   getters: {},
-  actions: {},
+  actions: {
+
+  },
 })
