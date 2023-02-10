@@ -1,5 +1,7 @@
 <template>
-  <PokemonDetailsCard />
+  <section>
+    <PokemonDetailsCard />
+  </section>
 </template>
 
 <script>

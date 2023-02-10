@@ -1,13 +1,13 @@
 <template>
-  <div v-if="pokemonDetailsInfos" class="pokemon-details">
-    <h1>{{ capitalizeFirstLetter(pokemonDetailsInfos.name) }}</h1>
-    <img v-bind:src="pokemonDetailsInfos.sprites.front_default" :alt="pokemonDetailsInfos.name" />
-    <img v-bind:src="pokemonDetailsInfos.sprites.back_default" :alt="pokemonDetailsInfos.name" />
-    <p>Weight: {{ pokemonDetailsInfos.weight }}</p>
-    <p>Height: {{ pokemonDetailsInfos.height }}</p>
+  <article v-if="pokemonDetailsInfos" class="pokemon-details">
+    <div>
+      <h1>{{ capitalizeFirstLetter(pokemonDetailsInfos.name) }}</h1>
+      <img v-bind:src="pokemonDetailsInfos.sprites.front_default" :alt="pokemonDetailsInfos.name" />
+      <img v-bind:src="pokemonDetailsInfos.sprites.back_default" :alt="pokemonDetailsInfos.name" />
+      <p>Weight: {{ pokemonDetailsInfos.weight }} pounds</p>
+      <p>Height: {{ pokemonDetailsInfos.height }} feet</p>
+    </div>
     <ul>
-      <div>
-      </div>
       <div>
         <span>Attributes:</span>
         <li v-for="stats in pokemonDetailsInfos.stats" v-bind:key="stats.stat.name">
@@ -28,7 +28,7 @@
       </div>
     </ul>
     <router-link to="/">Voltar</router-link>
-  </div>
+  </article>
 </template>
 
 <script setup>

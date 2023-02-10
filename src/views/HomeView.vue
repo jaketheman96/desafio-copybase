@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <section class="home">
     <FilterPokemon />
     <PokemonCards />
-  </div>
+  </section>
 </template>
 
 <script>

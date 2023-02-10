@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article>
     <form v-on:submit="handleSubmit">
       <p>Find your pokemon!</p>
       <input v-model="pokemonName" placeholder="Ex: Pikachu" />
@@ -7,7 +7,7 @@
       <p v-if="pokemonStore.error">Not Found!</p>
       <p>{{ missingInput }}</p>
     </form>
-  </div>
+  </article>
 </template>
 
 <script setup>
