@@ -1,13 +1,4 @@
-
-import HomeView from './views/HomeView.vue';
-
-
-import HomeView from './views/HomeView.vue';
-
 <template>
-  <nav>
-    <router-link to="/" />
-  </nav>
   <router-view/>
 </template>
 
