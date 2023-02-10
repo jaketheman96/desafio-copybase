@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+import fetchPokemonByName from "@/utils/fetchPokemon";
 
 export const usePokemonStore = defineStore({
   id: 'PokemonStore',
@@ -6,17 +7,32 @@ export const usePokemonStore = defineStore({
     pokemonDetails: null,
     pokemonSpecie: null,
     pokemonEvolution: null,
+    firstPokemonEvolved: null,
+    secondPokemonEvolved: null,
     error: '',
   }),
-  getters: {},
+  getters: {
+    getEvolutionChainNames() {
+      if (this.pokemonEvolution) {
+        const { chain } = this.pokemonEvolution;
+        const { name } = this.pokemonDetails
+        return [
+          chain.species.name !== name && chain.species.name,
+          chain.evolves_to[0].species.name !== name && chain.evolves_to[0].species.name,
+          chain.evolves_to[0].evolves_to[0].species.name !== name
+          && chain.evolves_to[0].evolves_to[0].species.name,
+        ]
+      }
+    },
+  },
   actions: {
-
     async getPokemonDetails(name) {
-      const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-      await fetch(url)
-        .then((response) => response.json())
-        .then((data) => this.pokemonDetails = data)
-        .catch((error) => this.error = error.message)
+      try {
+        const pokemonDetails = await fetchPokemonByName(name)
+        this.pokemonDetails = pokemonDetails;
+      } catch (error) {
+        return this.error = error.message
+      }
     },
 
     async getPokemonSpecies() {
@@ -31,6 +47,17 @@ export const usePokemonStore = defineStore({
         .then((response) => response.json())
         .then((data) => this.pokemonEvolution = data)
         .catch((error) => this.error = error.message)
+    },
+
+    async getPokemonsEvolvedInfos() {
+      if (this.pokemonEvolution && this.pokemonEvolution.chain.evolves_to !== []) {
+        const evolutionChain = this.getEvolutionChainNames
+          .filter((pokemon) => pokemon !== false)
+        const firstPokemon = await fetchPokemonByName(evolutionChain[0])
+        const secondPokemon = await fetchPokemonByName(evolutionChain[1])
+        this.firstPokemonEvolved = firstPokemon
+        this.secondPokemonEvolved = secondPokemon
+      }
     }
   },
 })

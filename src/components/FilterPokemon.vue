@@ -20,6 +20,7 @@ const {
   getPokemonDetails,
   getPokemonSpecies,
   getPokemonEvolution,
+  getPokemonsEvolvedInfos,
 } = pokemonStore
 const pokemonName = ref('')
 const missingInput = ref('')
@@ -32,6 +33,7 @@ async function handleSubmit(event) {
   await getPokemonDetails(pokemonName.value.toLowerCase())
   await getPokemonSpecies()
   await getPokemonEvolution()
+  await getPokemonsEvolvedInfos()
 }
 
 </script>

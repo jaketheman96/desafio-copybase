@@ -8,7 +8,7 @@
 <script>
 // @ is an alias to /src
 import FilterPokemon from '@/components/FilterPokemon.vue'
-import PokemonCards from '../components/PokemonCards.vue'
+import PokemonCards from '@/components/PokemonCards.vue'
 
 export default {
   name: 'HomeView',
