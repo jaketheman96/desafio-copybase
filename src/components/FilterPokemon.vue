@@ -30,7 +30,8 @@ async function handleSubmit(event) {
   pokemonStore.$reset()
   missingInput.value = ''
   if (!pokemonName.value) return missingInput.value = 'Type a pokemon!'
-  await getPokemonDetails(pokemonName.value.toLowerCase())
+  const pokemonDetails = await getPokemonDetails(pokemonName.value.toLowerCase())
+  if (pokemonDetails.message) return;
   await getPokemonSpecies()
   await getPokemonEvolution()
   await getPokemonsEvolvedInfos()
@@ -55,7 +56,7 @@ article {
     height: $heigth;
     padding: 0 10px;
   }
-  
+
   button {
     border-radius: $radius;
     margin-left: 1em;

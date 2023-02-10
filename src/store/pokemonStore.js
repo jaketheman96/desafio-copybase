@@ -29,9 +29,9 @@ export const usePokemonStore = defineStore({
     async getPokemonDetails(name) {
       try {
         const pokemonDetails = await fetchPokemonByName(name)
-        this.pokemonDetails = pokemonDetails;
+        return this.pokemonDetails = pokemonDetails;
       } catch (error) {
-        return this.error = error.message
+        return this.error = error
       }
     },
 
@@ -39,14 +39,14 @@ export const usePokemonStore = defineStore({
       await fetch(this.pokemonDetails.species.url)
         .then((response) => response.json())
         .then((data) => this.pokemonSpecie = data)
-        .catch((error) => this.error = error.message)
+        .catch((error) => this.error = error)
     },
 
     async getPokemonEvolution() {
       await fetch(this.pokemonSpecie.evolution_chain.url)
         .then((response) => response.json())
         .then((data) => this.pokemonEvolution = data)
-        .catch((error) => this.error = error.message)
+        .catch((error) => this.error = error)
     },
 
     async getPokemonsEvolvedInfos() {
@@ -56,7 +56,7 @@ export const usePokemonStore = defineStore({
         const firstPokemon = await fetchPokemonByName(evolutionChain[0])
         const secondPokemon = await fetchPokemonByName(evolutionChain[1])
         this.firstPokemonEvolved = firstPokemon
-        this.secondPokemonEvolved = secondPokemon
+        return this.secondPokemonEvolved = secondPokemon
       }
     }
   },
