@@ -1,6 +1,7 @@
 <template>
   <nav>
     <router-link to="/" />
+    <router-link to="/pokemon-details/" />
   </nav>
   <router-view/>
 </template>
