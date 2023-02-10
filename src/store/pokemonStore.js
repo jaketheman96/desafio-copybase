@@ -3,21 +3,34 @@ import { defineStore } from "pinia"
 export const usePokemonStore = defineStore({
   id: 'PokemonStore',
   state: () => ({
-    pokemonDetails: {},
+    pokemonDetails: null,
+    pokemonSpecie: null,
+    pokemonEvolution: null,
     error: '',
-    loading: false
   }),
   getters: {},
   actions: {
-    async getPokemon(name) {
+
+    async getPokemonDetails(name) {
       const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-      this.error = ''
-      this.loading = true
-      fetch(url)
+      await fetch(url)
         .then((response) => response.json())
         .then((data) => this.pokemonDetails = data)
         .catch((error) => this.error = error.message)
-        .finally(() => this.loading = false)
+    },
+
+    async getPokemonSpecies() {
+      await fetch(this.pokemonDetails.species.url)
+        .then((response) => response.json())
+        .then((data) => this.pokemonSpecie = data)
+        .catch((error) => this.error = error.message)
+    },
+
+    async getPokemonEvolution() {
+      await fetch(this.pokemonSpecie.evolution_chain.url)
+        .then((response) => response.json())
+        .then((data) => this.pokemonEvolution = data)
+        .catch((error) => this.error = error.message)
     }
   },
 })

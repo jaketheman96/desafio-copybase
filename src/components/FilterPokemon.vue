@@ -4,8 +4,8 @@
       <p>Find your pokemon!</p>
       <input v-model="pokemonName" placeholder="Ex: Pikachu" />
       <button type="submit" v-on:click="handleSubmit">Find</button>
-      <p v-if="loading">Loading...</p>
-      <p v-if="error">Not Found!</p>
+      <p v-if="pokemonStore.error">Not Found!</p>
+      <p>{{ missingInput }}</p>
     </form>
   </div>
 </template>
@@ -13,15 +13,25 @@
 <script setup>
 import { ref } from 'vue'
 import { usePokemonStore } from '@/store/pokemonStore'
-import { storeToRefs } from 'pinia'
 
-const { error, loading } = storeToRefs(usePokemonStore())
-const { getPokemon } = usePokemonStore()
+const pokemonStore = usePokemonStore()
+
+const {
+  getPokemonDetails,
+  getPokemonSpecies,
+  getPokemonEvolution,
+} = pokemonStore
 const pokemonName = ref('')
+const missingInput = ref('')
 
 async function handleSubmit(event) {
   event.preventDefault()
-  getPokemon(pokemonName.value.toLowerCase())
+  pokemonStore.$reset()
+  missingInput.value = ''
+  if(!pokemonName.value) return missingInput.value = 'Type a pokemon!'
+  await getPokemonDetails(pokemonName.value.toLowerCase())
+  await getPokemonSpecies()
+  await getPokemonEvolution()
 }
 
 </script>
