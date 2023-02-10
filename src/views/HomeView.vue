@@ -18,3 +18,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+section {
+  min-height: 100vh;
+  overflow: hidden;
+}
+</style>

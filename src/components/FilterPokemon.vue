@@ -29,7 +29,7 @@ async function handleSubmit(event) {
   event.preventDefault()
   pokemonStore.$reset()
   missingInput.value = ''
-  if(!pokemonName.value) return missingInput.value = 'Type a pokemon!'
+  if (!pokemonName.value) return missingInput.value = 'Type a pokemon!'
   await getPokemonDetails(pokemonName.value.toLowerCase())
   await getPokemonSpecies()
   await getPokemonEvolution()
@@ -37,3 +37,47 @@ async function handleSubmit(event) {
 }
 
 </script>
+
+<style lang="scss" scoped>
+$fontcolor: rgb(255, 242, 242);
+$fontweight: 800;
+$fontsize: 25px;
+$heigth: 2em;
+$radius: 6px;
+
+article {
+  width: 80vw;
+  margin: auto;
+
+  input {
+    border-radius: $radius;
+    border: 0;
+    height: $heigth;
+    padding: 0 10px;
+  }
+  
+  button {
+    border-radius: $radius;
+    margin-left: 1em;
+    border: 0;
+    font-weight: $fontweight;
+    color: $fontcolor;
+    cursor: pointer;
+    width: 5em;
+    height: $heigth;
+    background-color: rgb(63, 31, 31);
+  }
+
+  button:hover {
+    background-color: $fontcolor;
+    color: rgb(63, 31, 31);
+  }
+
+  p {
+    margin: 30px 0;
+    color: $fontcolor;
+    font-weight: $fontweight;
+    font-size: $fontsize;
+  }
+}
+</style>
