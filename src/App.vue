@@ -1,7 +1,12 @@
+
+import HomeView from './views/HomeView.vue';
+
+
+import HomeView from './views/HomeView.vue';
+
 <template>
   <nav>
     <router-link to="/" />
-    <router-link to="/pokemon-details/" />
   </nav>
   <router-view/>
 </template>
