@@ -8,22 +8,26 @@
         <img v-bind:src="pokemonDetails.sprites.front_default" />
       </div>
     </router-link>
-    <router-link :to="{ name: 'pokemon-details', params: { name: firstPokemonEvolved.name } }">
-      <div v-if="firstPokemonEvolved">
-        <p>
-          {{ capitalizeFirstLetter(firstPokemonEvolved.name) }}
-        </p>
-        <img v-bind:src="firstPokemonEvolved.sprites.front_default" />
-      </div>
-    </router-link>
-    <router-link :to="{ name: 'pokemon-details', params: { name: secondPokemonEvolved.name } }">
-      <div v-if="secondPokemonEvolved">
-        <p>
-          {{ capitalizeFirstLetter(secondPokemonEvolved.name) }}
-        </p>
-        <img v-bind:src="secondPokemonEvolved.sprites.front_default" />
-      </div>
-    </router-link>
+    <div v-if="firstPokemonEvolved">
+      <router-link :to="{ name: 'pokemon-details', params: { name: firstPokemonEvolved.name } }">
+        <div>
+          <p>
+            {{ capitalizeFirstLetter(firstPokemonEvolved.name) }}
+          </p>
+          <img v-bind:src="firstPokemonEvolved.sprites.front_default" />
+        </div>
+      </router-link>
+    </div>
+    <div v-if="secondPokemonEvolved">
+      <router-link :to="{ name: 'pokemon-details', params: { name: secondPokemonEvolved.name } }">
+        <div>
+          <p>
+            {{ capitalizeFirstLetter(secondPokemonEvolved.name) }}
+          </p>
+          <img v-bind:src="secondPokemonEvolved.sprites.front_default" />
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
