@@ -1,24 +1,15 @@
-# desafio-copybase
+# Desafio-copybase
 
-## Project setup
-```
-npm install
-```
+Desafio realizado para empresa Copybase, que consiste em criar um filtro de pokemon e retornar o pokemon procurado e suas evoluções (evolution-chains) utilizando o [PokeAPI](https://pokeapi.co/).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Link do deploy: [https://desafio-copybase.vercel.app/](https://desafio-copybase.vercel.app/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Tecnologias utilizada:
 
-### Lints and fixes files
-```
-npm run lint
-```
+-Vue.js;
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+-Pinia;
+
+-Vue-router;
+
+-Sass;
