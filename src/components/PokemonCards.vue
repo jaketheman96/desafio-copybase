@@ -56,7 +56,7 @@ article {
   width: 70vw;
   flex-wrap: wrap;
   row-gap: 30px;
-  margin: 50px auto 0;
+  margin: 50px auto 30px;
 
   img {
     width: 7em;
