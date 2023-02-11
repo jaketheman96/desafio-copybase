@@ -113,6 +113,7 @@ article {
     display: flex;
     justify-content: space-evenly;
     padding: 0;
+    margin: 3em 0;
 
     div {
       background-color: $backgroundcolor;
@@ -129,7 +130,9 @@ article {
 
 @media only screen and (max-width: 800px) {
   article {
+    padding-bottom: 20px;
     ul {
+      margin: 2em 0;
       flex-direction: column;
       align-items: center;
       gap: 15px;
@@ -140,6 +143,12 @@ article {
 @media only screen and (max-width: 650px) {
   .height-weight p {
     font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .height-weight p {
+    font-size: 10px;
   }
 }
 </style>
