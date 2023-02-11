@@ -77,6 +77,7 @@ article {
   }
 
   h1 {
+    margin: 20px 0 0;
     color: rgb(53, 53, 53);
     font-weight: $fontweight;
     font-size: 30px;
@@ -120,6 +121,9 @@ article {
       padding: 20px;
       width: 10em;
     }
+  }
+  a {
+    font-size: 25px;
   }
 }
 
